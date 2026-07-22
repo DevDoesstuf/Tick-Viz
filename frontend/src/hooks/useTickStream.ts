@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, type MutableRefObject } from 'react';
 import { MainThreadIngestion } from '../ingestion/MainThreadIngestion';
 import { WorkerIngestion } from '../ingestion/WorkerIngestion';
 import type { BackpressureStrategy, BufferMetricsSnapshot, OhlcBar, RawTick } from '../types';
@@ -34,7 +34,7 @@ interface UseTickStreamArgs {
  * themselves be a performance problem this project is explicitly trying
  * to avoid.
  */
-export function useTickStream({ wsUrl, capacity, strategy, ingestionMode }: UseTickStreamArgs): React.MutableRefObject<IngestionController | null> {
+export function useTickStream({ wsUrl, capacity, strategy, ingestionMode }: UseTickStreamArgs): MutableRefObject<IngestionController | null> {
   const controllerRef = useRef<IngestionController | null>(null);
   const strategyRef = useRef(strategy);
   strategyRef.current = strategy;

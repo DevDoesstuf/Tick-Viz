@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, type MutableRefObject } from 'react';
 import { useAnimationFrame } from '../hooks/useAnimationFrame';
 import type { OhlcBar, RawTick } from '../types';
 
@@ -17,7 +17,7 @@ interface IngestionLike {
 
 interface TickChartProps {
   selectedSymbol: string;
-  controllerRef: React.MutableRefObject<IngestionLike | null>;
+  controllerRef: MutableRefObject<IngestionLike | null>;
   /** Called once per rendered frame with every drained item (all symbols,
    * not just the selected one) -- lets the parent keep the full ticker
    * sidebar's last-known price up to date without a second drain call. */
